@@ -3,7 +3,7 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.border.*;
 
-/*¹¦ÄÜÑ¡Ôñ½çÃæ-ÆÕÍ¨¹ÜÀíÔ±*/
+/*åŠŸèƒ½é€‰æ‹©ç•Œé¢-æ™®é€šç®¡ç†å‘˜*/
 public class Select extends JFrame implements ActionListener {
 
 	JPanel jpanel1,jpanel2;
@@ -13,25 +13,25 @@ public class Select extends JFrame implements ActionListener {
 
 	public Select() {
 
-		jpanel1 = new JPanel();		 
+	    jpanel1 = new JPanel();		 
 	    jpanel2 = new JPanel();
 	    
-	    jpanel1.setBorder(new TitledBorder("ÇëÑ¡ÔñÒªÊ¹ÓÃµÄ¹¦ÄÜ£º"));
+	    jpanel1.setBorder(new TitledBorder("è¯·é€‰æ‹©è¦ä½¿ç”¨çš„åŠŸèƒ½ï¼š"));
 	   
-	    button_AddNewCheckIn = new JButton("¿ÍÈËÈë×¡");
+	    button_AddNewCheckIn = new JButton("å®¢äººå…¥ä½");
 	    button_AddNewCheckIn.addActionListener(this);
-	    button_AddNewCheckOut = new JButton("¿ÍÈËÍË·¿");
+	    button_AddNewCheckOut = new JButton("å®¢äººé€€æˆ¿");
 	    button_AddNewCheckOut.addActionListener(this);
-	    button_RoomInformationQuery = new JButton("²éÑ¯¿Í·¿ĞÅÏ¢");
-		button_RoomInformationQuery.addActionListener(this);
-		button_CustomerInformationQuery = new JButton("²éÑ¯¿ÍÈËĞÅÏ¢");
-        button_CustomerInformationQuery.addActionListener(this);
-        button_CustomerExpenseQuery = new JButton("²éÑ¯¿ÍÈË·ÑÓÃ");
-        button_CustomerExpenseQuery.addActionListener(this);
-        button_CustomerOvertimeQuery = new JButton("²éÑ¯³¬Ê±¿ÍÈË");
-        button_CustomerOvertimeQuery.addActionListener(this);
-        button_Cancel = new JButton("ÍË³ö");
-        button_Cancel.addActionListener(this);
+	    button_RoomInformationQuery = new JButton("æŸ¥è¯¢å®¢æˆ¿ä¿¡æ¯");
+	    button_RoomInformationQuery.addActionListener(this);
+	    button_CustomerInformationQuery = new JButton("æŸ¥è¯¢å®¢äººä¿¡æ¯");
+            button_CustomerInformationQuery.addActionListener(this);
+            button_CustomerExpenseQuery = new JButton("æŸ¥è¯¢å®¢äººè´¹ç”¨");
+            button_CustomerExpenseQuery.addActionListener(this);
+            button_CustomerOvertimeQuery = new JButton("æŸ¥è¯¢è¶…æ—¶å®¢äºº");
+            button_CustomerOvertimeQuery.addActionListener(this);
+            button_Cancel = new JButton("é€€å‡º");
+            button_Cancel.addActionListener(this);
 
 		jpanel1.add(button_AddNewCheckIn);
 		jpanel1.add(button_AddNewCheckOut);
@@ -52,7 +52,7 @@ public class Select extends JFrame implements ActionListener {
 		
 	}
 	
-	/*ÍË³ö*/
+	/*é€€å‡º*/
 	public void button_Cancel_Click() {
 		this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -62,7 +62,7 @@ public class Select extends JFrame implements ActionListener {
 		frame_Enter_Manager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	/*²éÑ¯¿Í·¿ĞÅÏ¢*/
+	/*æŸ¥è¯¢å®¢æˆ¿ä¿¡æ¯*/
 	public void button_RoomInformationQuery_Click() {
     	this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -72,7 +72,7 @@ public class Select extends JFrame implements ActionListener {
 		frame_RoomInformationQuery.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
     
-	/*²éÑ¯ÓÃ»§ĞÅÏ¢*/
+    /*æŸ¥è¯¢ç”¨æˆ·ä¿¡æ¯*/
     public void button_CustomerInformationQuery_Click() {
     	this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -82,7 +82,7 @@ public class Select extends JFrame implements ActionListener {
 		frame_CustomerInformationQuery.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
     
-    /*²éÑ¯¿ÍÈË·ÑÓÃ*/
+    /*æŸ¥è¯¢å®¢äººè´¹ç”¨*/
     public void button_CustomerExpenseQuery_Click() {
     	this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -92,7 +92,7 @@ public class Select extends JFrame implements ActionListener {
 		frame_CustomerExpenseQuery.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
     
-    /*²éÑ¯µ½ÆÚ/³¬Ê±¿ÍÈË*/
+    /*æŸ¥è¯¢åˆ°æœŸ/è¶…æ—¶å®¢äºº*/
     public void button_CustomerOvertime_Click() {
     	this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -102,7 +102,7 @@ public class Select extends JFrame implements ActionListener {
 		frame_CustomerOvertimeQuery.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
     
-    /*Ìí¼ÓÈë×¡ĞÅÏ¢*/
+    /*æ·»åŠ å…¥ä½ä¿¡æ¯*/
     public void button_AddNewCheckIn_Click() {
     	this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -112,7 +112,7 @@ public class Select extends JFrame implements ActionListener {
 		frame_AddNewCheckIn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
     
-    /*Ìí¼ÓÍË·¿ĞÅÏ¢*/
+    /*æ·»åŠ é€€æˆ¿ä¿¡æ¯*/
     public void button_AddNewCheckOut_Click() {
     	this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
