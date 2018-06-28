@@ -4,8 +4,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.sql.*;
 
-
-/*¿ÍÈËĞÅÏ¢²éÑ¯*/
+/*å®¢äººä¿¡æ¯æŸ¥è¯¢*/
 public class CustomerInformationQuery extends JFrame implements ActionListener {
 
 	JLabel label_CSerialNumber;
@@ -40,26 +39,26 @@ public class CustomerInformationQuery extends JFrame implements ActionListener {
 		jpanel1 = new JPanel();
 		jpanel2 = new JPanel();
 		
-		jpanel1.setBorder(new TitledBorder("ÊäÈëÒª²éÑ¯µÄÓÃ»§ĞÅÏ¢"));
+		jpanel1.setBorder(new TitledBorder("è¾“å…¥è¦æŸ¥è¯¢çš„ç”¨æˆ·ä¿¡æ¯"));
 		
-		label_CSerialNumber = new JLabel("¿Í»§±àºÅ£º");
+		label_CSerialNumber = new JLabel("å®¢æˆ·ç¼–å·ï¼š");
 		txt_CSerialNumber = new JTextField(10);
-		label_RSerialNumber = new JLabel("Ëù×¡¿Í·¿±àºÅ£º");
+		label_RSerialNumber = new JLabel("æ‰€ä½å®¢æˆ¿ç¼–å·ï¼š");
 		txt_RSerialNumber = new JTextField(10);
-		label_CustomerName = new JLabel("¿Í»§ĞÕÃû£º");
+		label_CustomerName = new JLabel("å®¢æˆ·å§“åï¼š");
 		txt_CustomerName = new JTextField(10);
-		label_CustomerTelephone = new JLabel("ÁªÏµµç»°");
+		label_CustomerTelephone = new JLabel("è”ç³»ç”µè¯");
 		txt_CustomerTelephone = new JTextField(10);
-		label_CustomerIDNumber = new JLabel("Éí·İÖ¤ºÅ");
+		label_CustomerIDNumber = new JLabel("èº«ä»½è¯å·");
 		txt_CustomerIDNumber = new JTextField(10);
-		label_CustomerAddress = new JLabel("¼ÒÍ¥×¡Ö·");
+		label_CustomerAddress = new JLabel("å®¶åº­ä½å€");
 		txt_CustomerAddress = new JTextField(10);
-		label_CustomerCompany = new JLabel("¹¤×÷µ¥Î»");
+		label_CustomerCompany = new JLabel("å·¥ä½œå•ä½");
 		txt_CustomerCompany = new JTextField(10);
 		
-		button_Query = new JButton("²éÑ¯");
+		button_Query = new JButton("æŸ¥è¯¢");
 		button_Query.addActionListener(this);
-		button_Cancel = new JButton("È¡Ïû");
+		button_Cancel = new JButton("å–æ¶ˆ");
 		button_Cancel.addActionListener(this);
 		
 		jpanel1.add(label_CSerialNumber);
@@ -97,7 +96,7 @@ public class CustomerInformationQuery extends JFrame implements ActionListener {
 
 	}
 	
-	/*²éÑ¯°´Å¥*/
+	/*æŸ¥è¯¢æŒ‰é’®*/
 	public void button_Query_Click() {
 		try {
 			con = DriverManager.getConnection(url, user, pwd);
@@ -111,7 +110,7 @@ public class CustomerInformationQuery extends JFrame implements ActionListener {
 			String customerAddress = txt_CustomerAddress.getText().trim();
 			String customerCompany = txt_CustomerCompany.getText().trim();
 			
-			/*²»¶¨Ìõ¼ş²éÑ¯ÓÃ»§ĞÅÏ¢*/
+			/*ä¸å®šæ¡ä»¶æŸ¥è¯¢ç”¨æˆ·ä¿¡æ¯*/
 			String SQL_ExecCustomerInformationQuery;
 			SQL_ExecCustomerInformationQuery = "EXEC CustomerInformationQuery ";
 			if (!(CSerialNumber.equals(""))) {
@@ -149,12 +148,12 @@ public class CustomerInformationQuery extends JFrame implements ActionListener {
 			} else {
 				SQL_ExecCustomerInformationQuery = SQL_ExecCustomerInformationQuery + "null,";
 			}
-			/*²Ã¼ôSQLÓï¾ä×îºóµÄ¡°,¡±ÒÔ·ûºÏÓï·¨¹æÔò*/
+			/*è£å‰ªSQLè¯­å¥æœ€åçš„â€œ,â€ä»¥ç¬¦åˆè¯­æ³•è§„åˆ™*/
 			SQL_ExecCustomerInformationQuery = SQL_ExecCustomerInformationQuery.substring(0, SQL_ExecCustomerInformationQuery.length()-1);
 			result_ExecCustomerInformationQuery = sql.executeQuery(SQL_ExecCustomerInformationQuery);
 			boolean isHavingData = result_ExecCustomerInformationQuery.next();
 			if (isHavingData == false) {
-				JOptionPane.showMessageDialog(this, "Ã»ÓĞ¶ÔÓ¦µÄ¿Í»§ĞÅÏ¢", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "æ²¡æœ‰å¯¹åº”çš„å®¢æˆ·ä¿¡æ¯", "æç¤º", JOptionPane.WARNING_MESSAGE);
 				txt_CSerialNumber.setText("");
 				txt_RSerialNumber.setText("");
 				txt_CustomerName.setText("");
@@ -177,7 +176,7 @@ public class CustomerInformationQuery extends JFrame implements ActionListener {
 		}  
 	}
 	
-	/*ÍË³ö*/
+	/*é€€å‡º*/
 	public void button_Cancel_Click() {
 		this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
