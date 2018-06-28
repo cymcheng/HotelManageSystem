@@ -1,4 +1,4 @@
-/*½«ÈÕÆÚ×Ö·û´®×ª»»Îª¡°yyyy-MM-dd¡±¸ñÊ½£¨ÒÔ±ãÓÚÂ¼ÈëÊı¾İ¿â£©*/
+/*å°†æ—¥æœŸå­—ç¬¦ä¸²è½¬æ¢ä¸ºâ€œyyyy-MM-ddâ€æ ¼å¼ï¼ˆä»¥ä¾¿äºå½•å…¥æ•°æ®åº“ï¼‰*/
 public class TransDateString {
 	
 	public static String transDateString(String string) {
@@ -56,7 +56,6 @@ public class TransDateString {
 			transStr.append(strArray[i]);
 		}
 		return transStr.toString().trim();
-
 	}
 
 }
