@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.sql.*;
 
-/*²éÑ¯·ûºÏÌõ¼şµÄ¿Í·¿ĞÅÏ¢*/
+/*æŸ¥è¯¢å®¢æˆ¿ä¿¡æ¯*/
 public class RoomInformationQuery extends JFrame implements ActionListener {
 	
 	JPanel jpanel1,jpanel2;
@@ -13,7 +13,7 @@ public class RoomInformationQuery extends JFrame implements ActionListener {
 	JButton button_Query,button_Cancel;
 	JTable jtable;
 	
-	Object cols[]= {"¿Í·¿±àºÅ","Ê£Óà·¿¼äÊı","µ¥¼Û","Ñº½ğ"};
+	Object cols[]= {"ì™€ë ›ê¸ëµ€","å‡å²±ë ›ì‡Œé‘’","ë°ì†¡","ç´€ìœ"};
 	Object rows[][];
 	
 	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=HotelManagement;";
@@ -30,50 +30,50 @@ public class RoomInformationQuery extends JFrame implements ActionListener {
 		jpanel1 = new JPanel();
 		jpanel2 = new JPanel();
 		
-		jpanel1.setBorder(new TitledBorder("ÊäÈëÒª²éÑ¯µÄ¿Í·¿ĞÅÏ¢"));
+		jpanel1.setBorder(new TitledBorder("æ¸´í™ï¤«ê¿´ç’‚ë¨ì™€ë ›æ–¤å£"));
 		
-		label_HotelName = new JLabel("¾ÆµêÃû");
+		label_HotelName = new JLabel("ì•„ë“¦ì¸°");
 		list_HotelName = new JComboBox();
-		label_RoomType = new JLabel("¿Í·¿ÀàĞÍ");
+		label_RoomType = new JLabel("ì™€ë ›ìšè¬¹");
 		list_RoomType = new JComboBox();
 		
-		button_Query = new JButton("²éÑ¯");
+		button_Query = new JButton("ê¿´ç’‚");
 		button_Query.addActionListener(this);
-		button_Cancel = new JButton("È¡Ïû");
+		button_Cancel = new JButton("í˜¤ï¤†");
 		button_Cancel.addActionListener(this);
 		
 		jpanel1.add(label_HotelName);
 		jpanel1.add(list_HotelName);
 		list_RoomType.addItem("(NULL)");
-		list_RoomType.addItem("±ê×¼¼ä");
-		list_RoomType.addItem("ÉÌÎñ¼ä");
-		list_RoomType.addItem("ºÀ»ª¼ä");
-		list_RoomType.addItem("´ó´²·¿");
-		list_RoomType.addItem("¼ÒÍ¥·¿");
+		list_RoomType.addItem("ê¹ƒç¡«ì‡Œ");
+		list_RoomType.addItem("î€«è›Ÿì‡Œ");
+		list_RoomType.addItem("ë´‰ë¹½ì‡Œ");
+		list_RoomType.addItem("ëŒ•ëˆ ë ›");
+		list_RoomType.addItem("ì†Œç£ë ›");
 		
 		jpanel1.add(label_RoomType);
 		jpanel1.add(list_RoomType);
 		list_HotelName.addItem("(NULL)");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨¾²°²ÇøĞÂÕ¢Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Ğ±ÍÁ¶«Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÖĞÉ½»¦Ì«£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÖÇÜöÔ·Î÷£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨³¤Í¾¿ÍÔË×ÜÕ¾£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÍâÌ²¹ú¼Ê¿ÍÔËÖĞĞÄ£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÎäÄşÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÑÓ³¤Â·µØÌúÕ¾£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÑÓ³¤Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨¹âĞÂÂ·)");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÆßÆÖÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨´ó°ØÊ÷£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨³¡ÖĞÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Òó¸ßÎ÷Â·µØÌúÕ¾£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨½­ÆÖµê£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ºªµ¦Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨¹²¿µÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨³¤ÑôÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Îå½Ç³¡£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Ô¥Ô°µê£©");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆì“°ê°›í˜åŠ¤èºì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆé–¨çšë•œì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆæ«“î€œë¹´æ ¼ï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆä¾‹ä¿¯éŸœé®«ï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆë‚€æ§ì™€é “æ‚§ç±ƒï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆæ£ç‰½ë²Œì…¥ì™€é “æ«“æ‡ƒï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆå¶ í€¼ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆå„ºë‚€ì¨Œë’ˆå±†ç±ƒï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆå„ºë‚€ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆë°ŸåŠ¤ì¨Œ)");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆíŒíŒ»ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆëŒ•ê²ç–³ï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆëæ«“ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆï¥•ë©•é®«ì¨Œë’ˆå±†ç±ƒï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆì‰­íŒ»ë“¦ï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆë²³ë±ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆë¬¾ì˜ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆë‚€æºì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆå·§ì‹¤ëï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆæ»”è¹ˆë“¦ï¼‰");
 		
 		jpanel2.add(button_Query);
 		jpanel2.add(button_Cancel);
@@ -89,7 +89,7 @@ public class RoomInformationQuery extends JFrame implements ActionListener {
 		
 	}
 	
-	/*²éÑ¯°´Å¥*/
+	/*ê¿´ç’‚ê°í*/
 	public void button_Query_Click() {
 	    try {
 			con = DriverManager.getConnection(url, user, pwd);
@@ -99,9 +99,9 @@ public class RoomInformationQuery extends JFrame implements ActionListener {
 			String roomType = list_RoomType.getSelectedItem().toString().trim();
 			
 			if (hotelName.equals("(NULL)") || roomType.equals("(NULL)")) {
-				JOptionPane.showMessageDialog(this, "¾ÆµêÃûºÍ¿Í·¿ÀàĞÍ¾ù²»ÄÜÎª¿Õ", "WARNING",JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(this, "ì•„ë“¦ì¸°ëµ¨ì™€ë ›ìšè¬¹ì—‡ê¼‡ì½˜æ§¨ì™•", "WARNING",JOptionPane.PLAIN_MESSAGE);
 			} else {
-				/*²éÑ¯¿Í·¿×´Ì¬*/
+				/*ê¿´ç’‚ì™€ë ›æ¦´æª„*/
 			    String SQL_SelectRoomInformation;
 			    SQL_SelectRoomInformation = "EXEC SelectRoom '" + hotelName + "','" + roomType + "'";
 			    result_SelectRoomInformation = sql.executeQuery(SQL_SelectRoomInformation);
@@ -109,10 +109,10 @@ public class RoomInformationQuery extends JFrame implements ActionListener {
 			    int currentRow = result_SelectRoomInformation.getRow();
 			
 			    if (currentRow == 0) {
-				    JOptionPane.showMessageDialog(this, "Ã»ÓĞ¶ÔÓ¦µÄ¿Í·¿ĞÅÏ¢", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+				    JOptionPane.showMessageDialog(this, "ì²­å”ëš¤å£‡ë¨ì™€ë ›æ–¤å£", "ç“Šåˆ»", JOptionPane.WARNING_MESSAGE);
 				
 			    } else {
-			    	/*ÓÃrow[][]½ÓÊÕ·ûºÏÌõ¼şµÄ¿Í·¿ĞÅÏ¢*/
+			    	/*ç—°row[][]ìŒˆæ¾—ë¥œë¶ä¿‚ìˆ­ë¨ì™€ë ›æ–¤å£*/
                     int rowCount = currentRow;
                     rows = new Object[rowCount][cols.length];
 		            int flag = 0; 
@@ -137,7 +137,7 @@ public class RoomInformationQuery extends JFrame implements ActionListener {
 		validate();
     }
 	
-	/*ÍË³ö*/
+	/*é€€å‡º*/
 	public void button_Cancel_Click() {
 		this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
