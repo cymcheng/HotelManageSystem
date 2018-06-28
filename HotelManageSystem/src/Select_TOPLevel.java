@@ -3,7 +3,7 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.border.*;
 
-/*¹¦ÄÜÑ¡Ôñ½çÃæ-¸ß¼¶¹ÜÀíÔ±*/
+/*åŠŸèƒ½é€‰æ‹©ç•Œé¢-é«˜çº§ç®¡ç†å‘˜*/
 public class Select_TOPLevel extends JFrame implements ActionListener {
 
 	JPanel jpanel1,jpanel2;
@@ -13,21 +13,21 @@ public class Select_TOPLevel extends JFrame implements ActionListener {
 
 	public Select_TOPLevel() {
 
-		jpanel1 = new JPanel();		 
+	    jpanel1 = new JPanel();		 
 	    jpanel2 = new JPanel();
 	    
-	    jpanel1.setBorder(new TitledBorder("ÇëÑ¡ÔñÒªÊ¹ÓÃµÄ¹¦ÄÜ£º"));
+	    jpanel1.setBorder(new TitledBorder("è¯·é€‰æ‹©è¦ä½¿ç”¨çš„åŠŸèƒ½ï¼š"));
 	    
-	    button_SumCharge = new JButton("Í³¼Æ×ÜÊÕÈë");
+	    button_SumCharge = new JButton("ç»Ÿè®¡æ€»æ”¶å…¥");
 	    button_SumCharge.addActionListener(this);
-        button_Cancel = new JButton("ÍË³ö");
-        button_Cancel.addActionListener(this);
+            button_Cancel = new JButton("é€€å‡º");
+            button_Cancel.addActionListener(this);
         
-		jpanel1.add(button_SumCharge);
-		jpanel2.add(button_Cancel);
+	    jpanel1.add(button_SumCharge);
+	    jpanel2.add(button_Cancel);
 		
 	    add(jpanel1, BorderLayout.NORTH);
-		add(jpanel2, BorderLayout.SOUTH);		
+            add(jpanel2, BorderLayout.SOUTH);		
 		 
 		try {
 			Class.forName("com.sqlserver.jdbc.Driver");
@@ -37,7 +37,7 @@ public class Select_TOPLevel extends JFrame implements ActionListener {
 		
 	}
 	
-	/*ÍË³ö*/
+	/*é€€å‡º*/
 	public void button_Cancel_Click() {
 		this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -47,7 +47,7 @@ public class Select_TOPLevel extends JFrame implements ActionListener {
 		frame_Enter.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	/*Í³¼Æ×ÜÊÕÈë°´Å¥*/
+	/*ç»Ÿè®¡æ€»æ”¶å…¥æŒ‰é’®*/
     public void button_SumCharge_Click() {
     	this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
