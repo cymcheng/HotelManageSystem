@@ -2,13 +2,12 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-/*ÍË·¿Ê±ÏÔÊ¾Ö§¸¶½ğ¶îµÄ½çÃæ*/
+/*é€€æˆ¿æ—¶æ˜¾ç¤ºæ”¯ä»˜é‡‘é¢çš„ç•Œé¢*/
 public class PaymentInterface extends JFrame implements ActionListener {
 	
 	JPanel jpanel;
 	JLabel label_PaymentReminder;
 	JTextField txt_PaymentReminder;
-	
 	JButton button_Cancel;
 
 	public PaymentInterface(int money) {
@@ -17,12 +16,12 @@ public class PaymentInterface extends JFrame implements ActionListener {
 		
 		jpanel = new JPanel();	
 		
-		label_PaymentReminder = new JLabel("¿Í»§ĞèÖ§¸¶½ğ¶îÎª£º");
+		label_PaymentReminder = new JLabel("å®¢æˆ·éœ€æ”¯ä»˜é‡‘é¢ä¸ºï¼š");
 		txt_PaymentReminder = new JTextField(8);
 		txt_PaymentReminder.setText(moneyStr);
 		txt_PaymentReminder.setEditable(false);
 		
-		button_Cancel = new JButton("¿Í»§ÒÑÍê³ÉÖ§¸¶£¬È·ÈÏÍË·¿");
+		button_Cancel = new JButton("å®¢æˆ·å·²å®Œæˆæ”¯ä»˜ï¼Œç¡®è®¤é€€æˆ¿");
 		button_Cancel.addActionListener(this);
 
 		jpanel.add(label_PaymentReminder);
@@ -35,7 +34,7 @@ public class PaymentInterface extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {		
 		if (e.getSource() == button_Cancel) {
 			this.dispose();
-			JOptionPane.showMessageDialog(this, "ÍË·¿³É¹¦", "³É¹¦", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(this, "é€€æˆ¿æˆåŠŸ", "æˆåŠŸ", JOptionPane.PLAIN_MESSAGE);
 		} 
 	}
 
