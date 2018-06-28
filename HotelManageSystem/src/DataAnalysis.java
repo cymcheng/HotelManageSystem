@@ -5,7 +5,7 @@ import java.sql.*;
 import javax.swing.border.*;
 import java.util.Date;
 
-/*Í³¼ÆÒ»¶ÎÊ±¼äµÄ¾Æµê×ÜÊÕÈë*/
+/*ç»Ÿè®¡ä¸€æ®µæ—¶é—´é…’åº—æ€»æ”¶å…¥*/
 public class DataAnalysis extends Enter_Manager implements ActionListener {
 
 	JLabel label_HotelName,label_StartDate,label_EndDate,label_SumCharge;
@@ -39,43 +39,43 @@ public class DataAnalysis extends Enter_Manager implements ActionListener {
 		jpanel2 = new JPanel();
 		jpanel3 = new JPanel();
 		
-		label_HotelName = new JLabel("¾ÆµêÃû");
+		label_HotelName = new JLabel("ì•„ë“¦ì¸°");
 		list_HotelName = new JComboBox();
-		label_StartDate = new JLabel("ÆðÊ¼Ê±¼ä");
-		label_EndDate = new JLabel("ÖÕÖ¹Ê±¼ä");
-		label_SumCharge = new JLabel("×ÜÊÕÈë");
+		label_StartDate = new JLabel("í…è¿¦ç‚ì‡Œ");
+		label_EndDate = new JLabel("è€å²ºç‚ì‡Œ");
+		label_SumCharge = new JLabel("æ‚§æ¾—í™");
 		txt_SumCharge = new JTextField(8);	
 		
-		button_Query = new JButton("¼ÆËã×ÜÊÕÈë");
+		button_Query = new JButton("ì…•ç‚¬æ‚§æ¾—í™");
 		button_Query.addActionListener(this);
-		button_Cancel = new JButton("ÍË³ö");
+		button_Cancel = new JButton("è—ë†”");
         button_Cancel.addActionListener(this);
 
-		jpanel1.setBorder(new TitledBorder("¼ÆËã×ÜÊÕÈë:"));
+		jpanel1.setBorder(new TitledBorder("ì…•ç‚¬æ‚§æ¾—í™:"));
 		
 		jpanel1.add(label_HotelName);
 		jpanel1.add(list_HotelName);
 		list_HotelName.addItem("(NULL)");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨¾²°²ÇøÐÂÕ¢Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Ð±ÍÁ¶«Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÖÐÉ½»¦Ì«£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÖÇÜöÔ·Î÷£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨³¤Í¾¿ÍÔË×ÜÕ¾£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÍâÌ²¹ú¼Ê¿ÍÔËÖÐÐÄ£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÎäÄþÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÑÓ³¤Â·µØÌúÕ¾£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÑÓ³¤Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨¹âÐÂÂ·)");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÆßÆÖÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨´ó°ØÊ÷£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨³¡ÖÐÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Òó¸ßÎ÷Â·µØÌúÕ¾£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨½­ÆÖµê£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ºªµ¦Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨¹²¿µÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨³¤ÑôÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Îå½Ç³¡£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Ô¥Ô°µê£©");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆì“°ê°›í˜åŠ¤èžºì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆé–¨çšë•œì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆæ«“î€œë¹´æ ¼ï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆä¾‹ä¿¯éŸœé®«ï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆë‚€æ§ì™€é “æ‚§ç±ƒï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆæ£ç‰½ë²Œì…¥ì™€é “æ«“æ‡ƒï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆå¶ í€¼ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆå„ºë‚€ì¨Œë’ˆå±†ç±ƒï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆå„ºë‚€ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆë°ŸåŠ¤ì¨Œ)");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆíŽŒíŒ»ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆëŒ•ê²ç–³ï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆëæ«“ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆï¥•ë©•é®«ì¨Œë’ˆå±†ç±ƒï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆì‰­íŒ»ë“¦ï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆë²³ë±ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆë¬¾ì˜ì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆë‚€æºì¨Œï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆå·§ì‹¤ëï¼‰");
+		list_HotelName.addItem("ëª©ì£¼ë´‰æ­ì•„ë“¦ï¼ˆæ»”è¹ˆë“¦ï¼‰");
 		
 		jpanel1.add(label_StartDate);
 		spinner_Calendar_StartDate.setEditor(dateEditor_StartDate);
@@ -105,22 +105,22 @@ public class DataAnalysis extends Enter_Manager implements ActionListener {
 		
 	}
 	
-	/*²éÑ¯°´Å¥*/
+	/*ê¿´ç’‚ê°í*/
     public void button_Query_Click() {
     	try {
     		con = DriverManager.getConnection(url, user, pwd);
  		    sql = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);;			
     		
     		String hotelName = list_HotelName.getSelectedItem().toString().trim();
-			/*¿ªÊ¼Ê±¼ä*/
+			/*ì—­è¿¦ç‚ì‡Œ*/
     		String tempStartDate = spinner_Calendar_StartDate.getValue().toString().trim();
 			String StartDate = TransDateString.transDateString(tempStartDate);
-            /*½áÊøÊ±¼ä*/
+            /*ì¨ç›£ç‚ì‡Œ*/
 			String tempEndDate = spinner_Calendar_EndDate.getValue().toString().trim();
 			String EndDate = TransDateString.transDateString(tempEndDate);
 
 		    if (list_HotelName.equals("(NULL)")) {
-		    	JOptionPane.showMessageDialog(this, "¾ÆµêÃû²»ÄÜÎª¿Õ", "WARNING",JOptionPane.PLAIN_MESSAGE);
+		    	JOptionPane.showMessageDialog(this, "ì•„ë“¦ì¸°ê¼‡ì½˜æ§¨ì™•", "WARNING",JOptionPane.PLAIN_MESSAGE);
 		    } else {
 		        String SQL_SelectCountCharge;
 		        SQL_SelectCountCharge = "SELECT SUM(RealityHotelCharge) AS SUM_Charge FROM CheckOut,Hotel WHERE Hotel.HSerialNumber=CheckOut.HSerialNumber AND HotelName='" + hotelName + "' AND  DateOfCheckOut>'" + StartDate + "' AND DateOfCheckOut<'" + EndDate + "'";
@@ -139,7 +139,7 @@ public class DataAnalysis extends Enter_Manager implements ActionListener {
 		}	   
 	}
 	
-    /*ÍË³ö*/
+    /*è—ë†”*/
     public void button_Cancel_Click() {
 		this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
