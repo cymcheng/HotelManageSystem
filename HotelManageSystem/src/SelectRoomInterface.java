@@ -3,7 +3,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.sql.*;
 
-/*ÔÚÑ¡¶¨Ò»ĞĞÔ¤¶©ĞÅÏ¢²¢µã»÷¡°²éÑ¯¡±ºóÓÃÓÚÑ¡Ôñ¿Í·¿µÄ½çÃæ*/
+/*åŠç†å…¥ä½æ—¶ç‚¹å‡»â€œæŸ¥è¯¢â€åç”¨äºé€‰æ‹©å®¢æˆ¿çš„ç•Œé¢*/
 public class SelectRoomInterface extends JFrame implements ActionListener {
 	
 	JPanel jpanel;
@@ -11,7 +11,7 @@ public class SelectRoomInterface extends JFrame implements ActionListener {
 	JButton button_Cancel;
 	JTable jtable;
 	
-	Object cols[]= {"¿Í·¿±àºÅ","µ¥¼Û","VIPÓÅ»İ","ÀÏÓÃ»§ÓÅ»İ","Ñº½ğ"};
+	Object cols[]= {"å®¢æˆ¿ç¼–å·","å•ä»·","VIPä¼˜æƒ ","è€ç”¨æˆ·ä¼˜æƒ ","æŠ¼é‡‘"};
 	Object rows[][];
 
 	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=HotelManagement;";
@@ -25,7 +25,7 @@ public class SelectRoomInterface extends JFrame implements ActionListener {
 		
 		jpanel = new JPanel();
 		
-		button_Cancel = new JButton("¹Ø±Õ");
+		button_Cancel = new JButton("å…³é—­");
 		button_Cancel.addActionListener(this);
 		
 		jpanel.add(button_Cancel);
@@ -36,14 +36,14 @@ public class SelectRoomInterface extends JFrame implements ActionListener {
 			con = DriverManager.getConnection(url, user, pwd);
 			sql = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
 			
-			/*²éÑ¯¿Í·¿±àºÅ*/
+			/*æŸ¥è¯¢å®¢æˆ¿ç¼–å·*/
 			String SQL_SelectRSerialNumber;
-			SQL_SelectRSerialNumber = "SELECT Room.RSerialNumber,UnitPrice,VIPDiscount,RegularDiscount,CashPledge FROM RoomType,Customer,Reservation,Room WHERE Reservation.CSerialNumber=Customer.CSerialNumber AND RoomType.TypeName=Reservation.TypeName AND Customer.Name='" + customerName + "' AND RoomStatus='ÒÑÔ¤¶©' AND Reservation.HSerialNumber=Room.HSerialNumber AND Room.RSerialNumber=RoomType.RSerialNumber GROUP BY Room.RSerialNumber,UnitPrice,VIPDiscount,RegularDiscount,CashPledge";
+			SQL_SelectRSerialNumber = "SELECT Room.RSerialNumber,UnitPrice,VIPDiscount,RegularDiscount,CashPledge FROM RoomType,Customer,Reservation,Room WHERE Reservation.CSerialNumber=Customer.CSerialNumber AND RoomType.TypeName=Reservation.TypeName AND Customer.Name='" + customerName + "' AND RoomStatus='å·²é¢„è®¢' AND Reservation.HSerialNumber=Room.HSerialNumber AND Room.RSerialNumber=RoomType.RSerialNumber GROUP BY Room.RSerialNumber,UnitPrice,VIPDiscount,RegularDiscount,CashPledge";
 			result_SelectRSerialNumber = sql.executeQuery(SQL_SelectRSerialNumber);
 			result_SelectRSerialNumber.last();
 			int currentRow = result_SelectRSerialNumber.getRow();
 			if (currentRow == 0) {
-				JOptionPane.showMessageDialog(this, "Ã»ÓĞ¿ÉÈë×¡µÄ·¿¼ä", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);	
+				JOptionPane.showMessageDialog(this, "æ²¡æœ‰å¯å…¥ä½çš„æˆ¿é—´", "æç¤º", JOptionPane.WARNING_MESSAGE);	
 			} else {
                 int rowCount = currentRow;
 		        rows = new Object[rowCount][cols.length];
