@@ -1,7 +1,7 @@
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-/*获得“yyyy-MM-dd”格式的系统时间*/
+/*鑾峰緱鈥測yyy-MM-dd鈥濇牸寮忕殑绯荤粺鏃堕棿*/
 public class SystemTime {
 	
 	public static String SystemTimeNow() {
@@ -13,7 +13,5 @@ public class SystemTime {
 		return systemTime;
 	}
 	
-	
-
 }
 
