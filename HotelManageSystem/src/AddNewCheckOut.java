@@ -6,6 +6,7 @@ import java.sql.*;
 import javax.swing.border.*;
 import java.util.Date;
 
+/*æ·»åŠ é€€æˆ¿ä¿¡æ¯*/
 public class AddNewCheckOut extends Enter_Manager implements ActionListener {
 
 	JLabel label_DateOfCheckOut;
@@ -14,13 +15,13 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
 
 	JButton button_AddCheckOut,button_Cancel;
 	
-	/*ÈÕÆÚ±à¼­Æ÷*/
+	/*æ—¥æœŸç¼–è¾‘å™¨*/
 	JSpinner spinner_Calendar = new JSpinner(new SpinnerDateModel());
 	JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(spinner_Calendar,"MM-dd");
 	
 	JTable jtable;
 	
-	Object cols[]= {"¶©µ¥±àºÅ","¾Æµê±àºÅ","ÓÃ»§±àºÅ","ÓÃ»§Ãû","¿Í·¿±àºÅ"};
+	Object cols[]= {"è®¢å•ç¼–å·","é…’åº—ç¼–å·","ç”¨æˆ·ç¼–å·","ç”¨æˆ·å","å®¢æˆ¿ç¼–å·"};
 	Object rows[][];
 
 	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=HotelManagement;";
@@ -44,24 +45,24 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
 	String customerName_CheckOut = "";
 	int RSerialNumber_CheckOut = 0;
 	
-    /*Ìí¼ÓĞÂµÄÍË·¿ĞÅÏ¢*/
+    /*æ·»åŠ æ–°çš„é€€æˆ¿ä¿¡æ¯*/
 	public AddNewCheckOut() {
 		
-		label_DateOfCheckOut = new JLabel("ÍË·¿ÈÕÆÚ");
+		label_DateOfCheckOut = new JLabel("é€€æˆ¿æ—¥æœŸ");
 		
 		jpanel1 = new JPanel();		 
 	    jpanel2 = new JPanel();
 	    
-	    jpanel1.setBorder(new TitledBorder("È·ÈÏÀëµêĞÅÏ¢:"));
+	    jpanel1.setBorder(new TitledBorder("ç¡®è®¤ç¦»åº—ä¿¡æ¯:"));
 	    
 	    jpanel1.add(label_DateOfCheckOut);
 		spinner_Calendar.setEditor(dateEditor);
 		spinner_Calendar.setValue(new Date());
 		jpanel1.add(spinner_Calendar);
 	    
-	    button_AddCheckOut = new JButton("È·ÈÏÀëµê");
+	    button_AddCheckOut = new JButton("ç¡®è®¤ç¦»åº—");
 	    button_AddCheckOut.addActionListener(this);
-	    button_Cancel = new JButton("ÍË³ö");
+	    button_Cancel = new JButton("é€€å‡º");
 	    button_Cancel.addActionListener(this);
 
 		jpanel2.add(button_AddCheckOut);
@@ -89,20 +90,20 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
 		validate();
 	}
 	
-	/*²éÑ¯ËùÓĞµÄÈë×¡ĞÅÏ¢²¢ÏÔÊ¾*/
+	/*æŸ¥è¯¢æ‰€æœ‰çš„å…¥ä½ä¿¡æ¯å¹¶æ˜¾ç¤º*/
     public Object[][] QueryCheckIn() {
 		try {
 			con = DriverManager.getConnection(url, user, pwd);
 			sql = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
 			
-			/*²éÑ¯Èë×¡ĞÅÏ¢*/
+			/*æŸ¥è¯¢å…¥ä½ä¿¡æ¯*/
 			String SQL_SelectCheckIn;
 			SQL_SelectCheckIn = "SELECT ReservationNumber,HSerialNumber,Customer.CSerialNumber,Name,RSerialNumber FROM CheckIn,Customer WHERE CheckIn.CSerialNumber=Customer.CSerialNumber";                           
 			result_SelectCheckIn = sql.executeQuery(SQL_SelectCheckIn);
 			result_SelectCheckIn.last();
 			int currentRow = result_SelectCheckIn.getRow();
 			if (currentRow == 0) {
-				JOptionPane.showMessageDialog(this, "Ä¿Ç°Ã»ÓĞ×¡ËŞĞÅÏ¢", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "ç›®å‰æ²¡æœ‰ä½å®¿ä¿¡æ¯", "æç¤º", JOptionPane.WARNING_MESSAGE);
 			} else {				
                 int rowCount = currentRow; 
 		        rows = new Object[rowCount][cols.length];
@@ -124,15 +125,15 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
 		return rows;
     }
     
-    /*ÍË·¿°´Å¥*/
+    /*é€€æˆ¿æŒ‰é’®*/
     public void button_AddCheckOut_Click() {
     	try {
     		con = DriverManager.getConnection(url, user, pwd);
 			sql = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);;
-			/*ÍË·¿ÈÕÆÚ*/
+			/*é€€æˆ¿æ—¥æœŸ*/
 			String tempDateOfCheckOut = spinner_Calendar.getValue().toString().trim();
 			String DateOfCheckOut = TransDateString.transDateString(tempDateOfCheckOut);
-			/*²éÑ¯Êµ¼ÊÈë×¡ÈÕÆÚ*/
+			/*æŸ¥è¯¢å®é™…å…¥ä½æ—¥æœŸ*/
 			String SQL_SelectRealityDateOfCheckIn;
 			SQL_SelectRealityDateOfCheckIn = "SELECT RealityDateOfCheckIn FROM CheckIn,Customer WHERE CheckIn.CSerialNumber=Customer.CSerialNumber AND Name='" + customerName_CheckOut + "'";
     		result_RealityDateOfCheckIn = sql.executeQuery(SQL_SelectRealityDateOfCheckIn);
@@ -141,9 +142,9 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
     		while (result_RealityDateOfCheckIn.next()) {
     			RealityDateOfCheckIn = result_RealityDateOfCheckIn.getString(1).trim();
     		}
-    		/*Êµ¼ÊÈë×¡ÌìÊı*/
+    		/*å®é™…å…¥ä½å¤©æ•°*/
     		int RealityNumberOfCheckIn = DateDiff.Datediff(RealityDateOfCheckIn, DateOfCheckOut);
-    		/*Ñº½ğ*/
+    		/*æŠ¼é‡‘*/
     		String SQL_SelectCashPledgeAmount;
     		SQL_SelectCashPledgeAmount = "SELECT cashPledgeAmount FROM CheckIn,Customer WHERE CheckIn.CSerialNumber=Customer.CSerialNumber AND Name='" + customerName_CheckOut + "'";
     		result_cashPledgeAmount = sql.executeQuery(SQL_SelectCashPledgeAmount);
@@ -154,7 +155,7 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
     			cashPledgeAmount = result_cashPledgeAmount.getInt(1);
         		System.out.println(cashPledgeAmount);
     		}
-    		/*Ô¤¸¶·¿·Ñ*/
+    		/*é¢„ä»˜æˆ¿è´¹*/
     		String SQL_SelectPrepayHotelCharge;
     		SQL_SelectPrepayHotelCharge = "SELECT prepayHotelCharge FROM CheckIn,Customer WHERE CheckIn.CSerialNumber=Customer.CSerialNumber AND Name='" + customerName_CheckOut + "'";
     		result_PrepayHotelCharge = sql.executeQuery(SQL_SelectPrepayHotelCharge);
@@ -174,7 +175,7 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
     		while (result_isVIP.next()) {
     			isVIP = result_isVIP.getString(1).trim();
     		}
-    		/*ÀÏ¿Í»§*/
+    		/*è€å®¢æˆ·*/
     		String SQL_SelectisRegular;
     		SQL_SelectisRegular = "SELECT Regular FROM Customer WHERE Name='" + customerName_CheckOut + "'";
     		result_isRegular = sql.executeQuery(SQL_SelectisRegular);
@@ -184,7 +185,7 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
     			isRegular = result_isRegular.getString(1).trim();
     			System.out.println(isRegular);
     		}
-    		/*²éÑ¯µ¥¼Û¡¢VIPÕÛ¿Û¡¢ÀÏÓÃ»§ÕÛ¿Û*/
+    		/*æŸ¥è¯¢å•ä»·ã€VIPæŠ˜æ‰£ã€è€ç”¨æˆ·æŠ˜æ‰£*/
     		int tempUnitPrice = 0;
     		double tempVIPDiscount = 0;
     		double tempRegularDiscount = 0;
@@ -200,7 +201,7 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
     		    //System.out.println("VIPDiscount      " + tempVIPDiscount);
     		    //System.out.println("RegularDiscount  " + tempRegularDiscount);
     		}
-    		/*¼ÆËãÊµ¼ÊµÄ·¿·Ñ*/
+    		/*è®¡ç®—å®é™…çš„æˆ¿è´¹*/
     		int realityHotelCharge = 0;
     		if (isVIP.equals("NO") && isRegular.equals("NO")) {
     			realityHotelCharge = (tempUnitPrice * RealityNumberOfCheckIn);
@@ -211,7 +212,7 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
     		} else if (isVIP.equals("YES") && isRegular.equals("YES")) {
     			realityHotelCharge = (int)(tempUnitPrice * RealityNumberOfCheckIn * tempVIPDiscount * tempRegularDiscount);
     		}
-    		/*Ìí¼ÓÍË·¿ĞÅÏ¢*/
+    		/*æ·»åŠ é€€æˆ¿ä¿¡æ¯*/
 		    String SQL_InsertNewCheckOut;
 			SQL_InsertNewCheckOut = "INSERT INTO CheckOut(CSerialNumber,HSerialNumber,RSerialNumber,ReservationNumber,RealityDateOfCheckIn,DateOfCheckOut,RealityHotelCharge) VALUES(" + CSerialNumber_CheckOut + "," + HSerialNumber_CheckOut + "," + RSerialNumber_CheckOut + "," + reservationNumber_CheckOut+ ",'" + RealityDateOfCheckIn + "','" + DateOfCheckOut + "','" + realityHotelCharge + "')";
 			//System.out.println(SQL_InsertNewCheckOut);
@@ -231,7 +232,7 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
 		}  	
     }
 	
-    /*ÍË³ö*/
+    /*é€€å‡º*/
     public void button_Cancel_Click() {
 		this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -241,7 +242,7 @@ public class AddNewCheckOut extends Enter_Manager implements ActionListener {
 		frame_Select.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
     
-    /*ÔÚµã»÷Ò»ĞĞÊ±»ñÈ¡¶ÔÓ¦µÄĞÅÏ¢*/
+    /*åœ¨ç‚¹å‡»ä¸€è¡Œæ—¶è·å–å¯¹åº”çš„ä¿¡æ¯*/
     public void showSelectedResrvationInformation() {
     	int row = jtable.getSelectedRow();
 		int colCount = jtable.getColumnCount();
