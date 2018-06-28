@@ -11,5 +11,4 @@ public class Main {
 		frame_Enter.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
-
 }
