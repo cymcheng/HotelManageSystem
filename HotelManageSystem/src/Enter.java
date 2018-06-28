@@ -3,12 +3,12 @@ import javax.swing.border.TitledBorder;
 import java.awt.event.*;
 import java.awt.*;
 
-/*µÇÂ¼½çÃæ-Ñ¡ÔñµÇÂ¼Éí·İ*/
+/*ç™»å½•ç•Œé¢-é€‰æ‹©ç™»å½•èº«ä»½*/
 public class Enter extends JFrame implements ActionListener {
 	
 	static String final_AccountNumber = "";
 	static String final_Password = "";
-	static int final_ManageLevel = 0;/*¹ÜÀíÔ±µÈ¼¶*/
+	static int final_ManageLevel = 0;/*ç®¡ç†å‘˜ç­‰çº§*/
 
 	JButton button_Enter_Customer,button_Enter_Manager,button_Cancel;
 	
@@ -19,16 +19,16 @@ public class Enter extends JFrame implements ActionListener {
 		jpanel1 = new JPanel();
 		jpanel2 = new JPanel();
 		
-		button_Enter_Customer = new JButton("ÓÃ»§µÇÂ¼");
+		button_Enter_Customer = new JButton("ç”¨æˆ·ç™»å½•");
 		button_Enter_Customer.addActionListener(this);
 		
-		button_Enter_Manager = new JButton("¹ÜÀíÔ±µÇÂ¼");
+		button_Enter_Manager = new JButton("ç®¡ç†å‘˜ç™»å½•");
 		button_Enter_Manager.addActionListener(this);
 		
-		button_Cancel = new JButton("ÍË³ö");
-        button_Cancel.addActionListener(this);
+		button_Cancel = new JButton("é€€å‡º");
+                button_Cancel.addActionListener(this);
 
-		jpanel1.setBorder(new TitledBorder("Ñ¡ÔñµÇÂ¼Éí·İ"));
+		jpanel1.setBorder(new TitledBorder("é€‰æ‹©ç™»å½•èº«ä»½"));
 
 		jpanel2.add(button_Enter_Customer);
 		jpanel2.add(button_Enter_Manager);
@@ -39,7 +39,7 @@ public class Enter extends JFrame implements ActionListener {
 
 	}
 	
-	/*ÓÃ»§µÇÂ¼*/
+	/*ç”¨æˆ·ç™»å½•*/
 	public void button_Enter_Customer_Click() {
 		this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -49,7 +49,7 @@ public class Enter extends JFrame implements ActionListener {
 		frame_Enter_Customer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	/*¹ÜÀíÔ±µÇÂ¼*/
+	/*ç®¡ç†å‘˜ç™»å½•*/
     public void button_Enter_Manager_Click() {
     	this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -59,7 +59,7 @@ public class Enter extends JFrame implements ActionListener {
 		frame_Enter_Manager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-    /*ÍË³ö*/
+    /*é€€å‡º*/
 	public void button_Cancel_Click() {
 		this.dispose();
 	}
