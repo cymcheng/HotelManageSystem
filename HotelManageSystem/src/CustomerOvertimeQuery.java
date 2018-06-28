@@ -4,7 +4,7 @@ import java.awt.*;
 import java.sql.*;
 import javax.swing.border.*;
 
-/*²éÑ¯µ½ÆÚ/³¬Ê±¿ÍÈË*/
+/*æŸ¥è¯¢åˆ°æœŸ/è¶…æ—¶å®¢äºº*/
 public class CustomerOvertimeQuery extends Enter_Manager implements ActionListener {
 	
 	JPanel jpanel1,jpanel2;
@@ -12,7 +12,7 @@ public class CustomerOvertimeQuery extends Enter_Manager implements ActionListen
 	JButton button_Cancel;
 	JTable jtable;
 	
-	Object cols[]= {"ÓÃ»§±àºÅ","¿Í·¿±àºÅ","ÓÃ»§Ãû","Êµ¼ÊÈë×¡Ê±¼ä","Ô¤¼ÆÈë×¡ÌìÊı","µ±Ç°Èë×¡ÌìÊı"};
+	Object cols[]= {"ç”¨æˆ·ç¼–å·","å®¢æˆ¿ç¼–å·","ç”¨æˆ·å","å®é™…å…¥ä½æ—¶é—´","é¢„è®¡å…¥ä½å¤©æ•°","å½“å‰å…¥ä½å¤©æ•°"};
 	Object rows[][];
 
 	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=HotelManagement;";
@@ -26,14 +26,14 @@ public class CustomerOvertimeQuery extends Enter_Manager implements ActionListen
 
 	public CustomerOvertimeQuery() {
 		
-		jpanel1 = new JPanel();		 
+	    jpanel1 = new JPanel();		 
 	    jpanel2 = new JPanel();
 	    
-	    jpanel1.setBorder(new TitledBorder("ÊäÈëĞÂÔöµÄ¶©µ¥ĞÅÏ¢:"));
+	    jpanel1.setBorder(new TitledBorder("è¾“å…¥æ–°å¢çš„è®¢å•ä¿¡æ¯:"));
 	    
-	    label_RSerialNumber = new JLabel("¿Í·¿±àºÅ");
+	    label_RSerialNumber = new JLabel("å®¢æˆ¿ç¼–å·");
 	    
-        button_Cancel = new JButton("ÍË³ö");
+        button_Cancel = new JButton("é€€å‡º");
         button_Cancel.addActionListener(this);
 		
 		jpanel1.add(label_RSerialNumber);
@@ -55,34 +55,34 @@ public class CustomerOvertimeQuery extends Enter_Manager implements ActionListen
 		validate();
 	}
 	
-	/*²éÑ¯µ½ÆÚ/³¬Ê±¿ÍÈË²¢ÏÔÊ¾*/
+	/*æŸ¥è¯¢åˆ°æœŸ/è¶…æ—¶å®¢äººå¹¶æ˜¾ç¤º*/
     public Object[][] QueryOvertime() {	
 		try {
 			con = DriverManager.getConnection(url, user, pwd);
 			sql = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
-			/*»ñµÃµ±Ç°ÈÕÆÚ*/
+			/*è·å¾—å½“å‰æ—¥æœŸ*/
 			String DateNow = SystemTime.SystemTimeNow();
 			//System.out.println(DateNow);
-			/*²éÑ¯³¬Ê±¿ÍÈË*/
+			/*æŸ¥è¯¢è¶…æ—¶å®¢äºº*/
 			String SQL_SelectCheckIn;
 			SQL_SelectCheckIn = "SELECT * FROM CustomerOvertimeQueryView";
 			result_SelectCheckIn = sql.executeQuery(SQL_SelectCheckIn);
 			result_SelectCheckIn.last();
 			int currentRow = result_SelectCheckIn.getRow();
 			if (currentRow == 0) {
-				JOptionPane.showMessageDialog(this, "Ä¿Ç°Ã»ÓĞ³¬Ê±¿ÍÈË", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "ç›®å‰æ²¡æœ‰è¶…æ—¶å®¢äºº", "æç¤º", JOptionPane.WARNING_MESSAGE);
 			} else {
                 int rowCount = currentRow;
 		        rows = new Object[rowCount][cols.length];
 		        int count = 0; 
 		        result_SelectCheckIn.beforeFirst();
 		        while (result_SelectCheckIn.next()) {
-		            rows[count][0] = result_SelectCheckIn.getInt(1);/*ÓÃ»§±àºÅ*/
-		            rows[count][1] = result_SelectCheckIn.getInt(2);/*¿Í·¿±àºÅ*/
-		            rows[count][2] = result_SelectCheckIn.getString(3);/*ÓÃ»§Ãû*/
-		            rows[count][3] = result_SelectCheckIn.getString(4);/*Êµ¼ÊÈë×¡Ê±¼ä*/
-		            rows[count][4] = result_SelectCheckIn.getInt(5);/*Ô¤¼ÆÈë×¡ÌìÊı*/
-		            rows[count][5] = Integer.parseInt(String.valueOf(DateDiff.Datediff(result_SelectCheckIn.getString(4), DateNow)));/*Êµ¼ÊÈë×¡ÌìÊı*/
+		            rows[count][0] = result_SelectCheckIn.getInt(1);/*ç”¨æˆ·ç¼–å·*/
+		            rows[count][1] = result_SelectCheckIn.getInt(2);/*å®¢æˆ¿ç¼–å·*/
+		            rows[count][2] = result_SelectCheckIn.getString(3);/*ç”¨æˆ·å*/
+		            rows[count][3] = result_SelectCheckIn.getString(4);/*å®é™…å…¥ä½æ—¶é—´*/
+		            rows[count][4] = result_SelectCheckIn.getInt(5);/*é¢„è®¡å…¥ä½å¤©æ•°*/
+		            rows[count][5] = Integer.parseInt(String.valueOf(DateDiff.Datediff(result_SelectCheckIn.getString(4), DateNow)));/*å®é™…å…¥ä½å¤©æ•°*/
 		            count++;
 		        }
 			}		
@@ -93,7 +93,7 @@ public class CustomerOvertimeQuery extends Enter_Manager implements ActionListen
 	    return rows; 
     }
     
-    /*ÍË³ö*/
+    /*é€€å‡º*/
     public void button_Cancel_Click() {
 		this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
