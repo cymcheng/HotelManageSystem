@@ -5,14 +5,14 @@ import java.awt.*;
 import java.sql.*;
 
 
-/*²éÑ¯Èë×¡¿ÍÈËµÄ·ÑÓÃ*/
+/*æŸ¥è¯¢å…¥ä½å®¢äººçš„è´¹ç”¨*/
 public class CustomerExpenseQuery extends JFrame implements ActionListener {
 	
 	JPanel jp1,jp2;
 	JButton button_Query,button_Cancel;
 	JTable jtable;
 	
-	Object cols[]= {"ÓÃ»§ĞÕÃû","µ±Ç°Èë×¡ÌìÊı","Ñº½ğ½ğ¶î","Ô¤½»·¿·Ñ","µ±Ç°×¡ËŞ·Ñ","µ±Ç°Óà¶î"};
+	Object cols[]= {"ç”¨æˆ·å§“å","å½“å‰å…¥ä½å¤©æ•°","æŠ¼é‡‘é‡‘é¢","é¢„äº¤æˆ¿è´¹","å½“å‰ä½å®¿è´¹","å½“å‰ä½™é¢"};
 	Object rows[][];
 	
 	JLabel label_CustomerName;
@@ -30,20 +30,20 @@ public class CustomerExpenseQuery extends JFrame implements ActionListener {
 	ResultSet result_isRegular = null;
 	ResultSet result_Expense = null;
 	ResultSet result_RealityDateOfCheckIn = null;
- 
+
 	public CustomerExpenseQuery() {
 		
 		jp1 = new JPanel();
 		jp2 = new JPanel();
 		
-		jp1.setBorder(new TitledBorder("ÓÃ»§×¡ËŞĞÅÏ¢²éÑ¯"));
+		jp1.setBorder(new TitledBorder("ç”¨æˆ·ä½å®¿ä¿¡æ¯æŸ¥è¯¢"));
 		
-		label_CustomerName = new JLabel("¿Í»§ĞÕÃû£º");
+		label_CustomerName = new JLabel("å®¢æˆ·å§“åï¼š");
 		txt_CustomerName = new JTextField(10);
 		
-		button_Query = new JButton("²éÑ¯");
+		button_Query = new JButton("æŸ¥è¯¢");
 		button_Query.addActionListener(this);
-		button_Cancel = new JButton("È¡Ïû");
+		button_Cancel = new JButton("å–æ¶ˆ");
 		button_Cancel.addActionListener(this);		
 		
 		jp1.add(label_CustomerName);
@@ -61,16 +61,16 @@ public class CustomerExpenseQuery extends JFrame implements ActionListener {
 			}		
 	}
 	
-	/*²éÑ¯°´Å¥*/
+	/*æŸ¥è¯¢æŒ‰é’®*/
 	public void button_Query_Click() {
 		try {
 			con = DriverManager.getConnection(url, user, pwd);
 			sql = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);;			
 		
 			String customerName = txt_CustomerName.getText().trim();
-			/*»ñÈ¡µ±Ç°ÈÕÆÚ*/
+			/*è·å–å½“å‰æ—¥æœŸ*/
 			String DateNow = SystemTime.SystemTimeNow();
-			/*²éÑ¯Êµ¼ÊÈë×¡ÈÕÆÚ*/
+			/*æŸ¥è¯¢å®é™…å…¥ä½æ—¥æœŸ*/
 			String SQL_SelectRealityDateOfCheckIn;
 			SQL_SelectRealityDateOfCheckIn = "SELECT RealityDateOfCheckIn FROM CheckIn,Customer WHERE CheckIn.CSerialNumber=Customer.CSerialNumber AND Name='" + customerName + "'";
     		result_RealityDateOfCheckIn = sql.executeQuery(SQL_SelectRealityDateOfCheckIn);
@@ -80,9 +80,9 @@ public class CustomerExpenseQuery extends JFrame implements ActionListener {
     			RealityDateOfCheckIn = result_RealityDateOfCheckIn.getString(1).trim();
         		System.out.println(RealityDateOfCheckIn);
     		}
-    		/*¼ÆËãµ±Ç°Èë×¡ÌìÊı*/
+    		/*è®¡ç®—å½“å‰å…¥ä½å¤©æ•°*/
     		int currentNumberOfCheckIn = DateDiff.Datediff(RealityDateOfCheckIn, DateNow);
-			/*²éÑ¯ÊÇ·ñÊÇVIP*/
+			/*æŸ¥è¯¢æ˜¯å¦æ˜¯VIP*/
     		String SQL_SelectisVIP;
     		SQL_SelectisVIP = "SELECT VIP FROM Customer WHERE Name='" + customerName + "'";
     		result_isVIP = sql.executeQuery(SQL_SelectisVIP);
@@ -91,7 +91,7 @@ public class CustomerExpenseQuery extends JFrame implements ActionListener {
     		while (result_isVIP.next()) {
     			isVIP = result_isVIP.getString(1).trim();
     		}
-    		/*²éÑ¯ÊÇ·ñÊÇÀÏ¿Í»§*/
+    		/*æŸ¥è¯¢æ˜¯å¦æ˜¯è€å®¢æˆ·*/
     		String SQL_SelectisRegular;
     		SQL_SelectisRegular = "SELECT Regular FROM Customer WHERE Name='" + customerName + "'";
     		result_isRegular = sql.executeQuery(SQL_SelectisRegular);
@@ -100,7 +100,7 @@ public class CustomerExpenseQuery extends JFrame implements ActionListener {
     		while (result_isRegular.next()) {
     			isRegular = result_isRegular.getString(1).trim();
     		}
-    		/*²éÑ¯µ¥¼Û£¬VIPÓÅ»İ£¬ÀÏÓÃ»§ÓÅ»İ*/
+    		/*æŸ¥è¯¢å•ä»·ï¼ŒVIPä¼˜æƒ ï¼Œè€ç”¨æˆ·ä¼˜æƒ */
     		int tempUnitPrice = 0;
     		double tempVIPDiscount = 0;
     		double tempRegularDiscount = 0;
@@ -113,7 +113,7 @@ public class CustomerExpenseQuery extends JFrame implements ActionListener {
         		tempVIPDiscount = result_Expense.getDouble(2);
         		tempRegularDiscount = result_Expense.getDouble(3);
     		}
-    		/*µ±Ç°·¿·Ñ*/
+    		/*å½“å‰æˆ¿è´¹*/
             int currentHotelCharge = 0;
     		if (isVIP.equals("NO") && isRegular.equals("NO")) {
     			currentHotelCharge = (tempUnitPrice * currentNumberOfCheckIn);
@@ -124,26 +124,26 @@ public class CustomerExpenseQuery extends JFrame implements ActionListener {
     		} else if (isVIP.equals("YES") && isRegular.equals("YES")) {
     			currentHotelCharge = (int)(tempUnitPrice * currentNumberOfCheckIn * tempVIPDiscount * tempRegularDiscount);
     		}
-			/*²éÑ¯Ñº½ğÓëÔ¤¸¶·¿·Ñ*/
+			/*æŸ¥è¯¢æŠ¼é‡‘ä¸é¢„ä»˜æˆ¿è´¹*/
 			String SQL_SelectExpenseFromCheckIn;
 			SQL_SelectExpenseFromCheckIn = "SELECT Name,CashPledgeAmount,PrepayHotelCharge FROM CheckIn,Customer WHERE CheckIn.CSerialNumber=Customer.CSerialNumber AND Name='" + customerName + "'";;
 			resultSQL = sql.executeQuery(SQL_SelectExpenseFromCheckIn);
 			resultSQL.last(); 
 			int currentRow = resultSQL.getRow();
 			if (currentRow == 0) {
-				JOptionPane.showMessageDialog(this, "Ã»ÓĞ¶ÔÓ¦µÄ¿Í»§ĞÅÏ¢", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "æ²¡æœ‰å¯¹åº”çš„å®¢æˆ·ä¿¡æ¯", "æç¤º", JOptionPane.WARNING_MESSAGE);
 			} else {
                  int rowCount = currentRow;
                  rows = new Object[rowCount][cols.length];
 		         int count = 0; 
 		         resultSQL.beforeFirst();
 		         while(resultSQL.next()) {
-		             rows[count][0] = resultSQL.getString(1);/*¿Í»§ĞÕÃû*/
-		             rows[count][1] = currentNumberOfCheckIn;/*µ±Ç°Èë×¡ÌìÊı*/
-		             rows[count][2] = resultSQL.getInt(2);/*Ñº½ğ*/
-		             rows[count][3] = resultSQL.getInt(3);/*Ô¤¸¶·¿·Ñ*/
-		             rows[count][4] = currentHotelCharge;/*µ±Ç°·¿·Ñ*/
-		             rows[count][5] = resultSQL.getInt(2) + resultSQL.getInt(3) - currentHotelCharge;/*µ±Ç°Óà¶î*/
+		             rows[count][0] = resultSQL.getString(1);/*å®¢æˆ·å§“å*/
+		             rows[count][1] = currentNumberOfCheckIn;/*å½“å‰å…¥ä½å¤©æ•°*/
+		             rows[count][2] = resultSQL.getInt(2);/*æŠ¼é‡‘*/
+		             rows[count][3] = resultSQL.getInt(3);/*é¢„ä»˜æˆ¿è´¹*/
+		             rows[count][4] = currentHotelCharge;/*å½“å‰æˆ¿è´¹*/
+		             rows[count][5] = resultSQL.getInt(2) + resultSQL.getInt(3) - currentHotelCharge;/*å½“å‰ä½™é¢*/
 		             count++;
 		         } 
 		    }
@@ -156,7 +156,7 @@ public class CustomerExpenseQuery extends JFrame implements ActionListener {
 		validate();
     }
 	
-	/*ÍË³ö*/
+	/*é€€å‡º*/
 	public void button_Cancel_Click() {
 		this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
