@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
 
-/*计算两个日期的天数差*/
+/*璁＄畻涓や釜鏃ユ湡鐨勫ぉ鏁板樊*/
 public class DateDiff {
 
 	public static int Datediff(String startDate, String endDate) {
