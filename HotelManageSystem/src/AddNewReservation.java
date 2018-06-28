@@ -16,7 +16,7 @@ public class AddNewReservation extends Enter_Manager implements ActionListener {
 	
 	JButton button_Add,button_Clear,button_Cancel;
 	
-	/*´´½¨ÈÕÆÚµ÷½Ú¿Ø¼ş*/
+	/*åˆ›å»ºæ—¥æœŸè°ƒèŠ‚æ§ä»¶*/
 	JSpinner spinner_Calendar = new JSpinner(new SpinnerDateModel());
 	JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(spinner_Calendar,"MM-dd");
 	
@@ -33,62 +33,62 @@ public class AddNewReservation extends Enter_Manager implements ActionListener {
 	ResultSet result_CustomerName = null;
 	ResultSet result_SelectHotelAndCustomerInformation = null;
 	ResultSet result_ExecReservationRoom = null;
-
+	
 	public AddNewReservation() {
 		
 		jpanel1 = new JPanel();
 		jpanel2 = new JPanel();
 		
-		label_HotelName = new JLabel("¾ÆµêÃû");
+		label_HotelName = new JLabel("é…’åº—å");
 		list_HotelName = new JComboBox();	
-		label_RoomType = new JLabel("¿Í·¿ÀàĞÍ");
+		label_RoomType = new JLabel("å®¢æˆ¿ç±»å‹");
 		list_RoomType = new JComboBox();
-		label_ExpectedNumberOfCheckIn = new JLabel("Ô¤¼ÆÈë×¡ÌìÊı");
+		label_ExpectedNumberOfCheckIn = new JLabel("é¢„è®¡å…¥ä½å¤©æ•°");
 		txt_ExpectedNumberOfCheckIn = new JTextField(6);
 
-		button_Add = new JButton("È·ÈÏÔ¤¶©");
+		button_Add = new JButton("ç¡®è®¤é¢„è®¢");
 		button_Add.addActionListener(this);
-        button_Clear = new JButton("Çå³ı");
+        button_Clear = new JButton("æ¸…é™¤");
         button_Clear.addActionListener(this);
-        button_Cancel = new JButton("ÍË³ö");
+        button_Cancel = new JButton("é€€å‡º");
         button_Cancel.addActionListener(this);
 
-		jpanel1.setBorder(new TitledBorder("¿ªÊ¼Ô¤¶©:"));
+		jpanel1.setBorder(new TitledBorder("å¼€å§‹é¢„è®¢:"));
 		
 		jpanel1.add(label_HotelName);
 		jpanel1.add(list_HotelName);
 		list_HotelName.addItem("(NULL)");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨¾²°²ÇøĞÂÕ¢Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Ğ±ÍÁ¶«Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÖĞÉ½»¦Ì«£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÖÇÜöÔ·Î÷£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨³¤Í¾¿ÍÔË×ÜÕ¾£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÍâÌ²¹ú¼Ê¿ÍÔËÖĞĞÄ£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÎäÄşÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÑÓ³¤Â·µØÌúÕ¾£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÑÓ³¤Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨¹âĞÂÂ·)");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ÆßÆÖÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨´ó°ØÊ÷£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨³¡ÖĞÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Òó¸ßÎ÷Â·µØÌúÕ¾£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨½­ÆÖµê£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨ºªµ¦Â·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨¹²¿µÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨³¤ÑôÂ·£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Îå½Ç³¡£©");
-		list_HotelName.addItem("¸ñÁÖºÀÌ©¾Æµê£¨Ô¥Ô°µê£©");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆé™å®‰åŒºæ–°é—¸è·¯ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆæ–œåœŸä¸œè·¯ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆä¸­å±±æ²ªå¤ªï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆæ™ºèŸè‹‘è¥¿ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆé•¿é€”å®¢è¿æ€»ç«™ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆå¤–æ»©å›½é™…å®¢è¿ä¸­å¿ƒï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆæ­¦å®è·¯ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆå»¶é•¿è·¯åœ°é“ç«™ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆå»¶é•¿è·¯ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆå…‰æ–°è·¯)");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆä¸ƒæµ¦è·¯ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆå¤§æŸæ ‘ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆåœºä¸­è·¯ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆæ®·é«˜è¥¿è·¯åœ°é“ç«™ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆæ±Ÿæµ¦åº—ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆé‚¯éƒ¸è·¯ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆå…±åº·è·¯ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆé•¿é˜³è·¯ï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆäº”è§’åœºï¼‰");
+		list_HotelName.addItem("æ ¼æ—è±ªæ³°é…’åº—ï¼ˆè±«å›­åº—ï¼‰");
 		
 		jpanel1.add(label_RoomType);
 		jpanel1.add(list_RoomType);
 		list_RoomType.addItem("(NULL)");
-		list_RoomType.addItem("±ê×¼¼ä");
-		list_RoomType.addItem("ÉÌÎñ¼ä");
-		list_RoomType.addItem("ºÀ»ª¼ä");
-		list_RoomType.addItem("´ó´²·¿");
-		list_RoomType.addItem("¼ÒÍ¥·¿");
+		list_RoomType.addItem("æ ‡å‡†é—´");
+		list_RoomType.addItem("å•†åŠ¡é—´");
+		list_RoomType.addItem("è±ªåé—´");
+		list_RoomType.addItem("å¤§åºŠæˆ¿");
+		list_RoomType.addItem("å®¶åº­æˆ¿");
 		
-		label_ExpectedDateOfCheckIn = new JLabel("Ô¤¼ÆÈë×¡Ê±¼ä");
+		label_ExpectedDateOfCheckIn = new JLabel("é¢„è®¡å…¥ä½æ—¶é—´");
 		jpanel1.add(label_ExpectedDateOfCheckIn);
 		spinner_Calendar.setEditor(dateEditor);
 		spinner_Calendar.setValue(new Date());
@@ -112,7 +112,7 @@ public class AddNewReservation extends Enter_Manager implements ActionListener {
 		
 	}
 	
-	/*Ô¤¶©°´Å¥*/
+	/*é¢„è®¢æŒ‰é’®*/
     public void button_Add_Click() {
     	try {
     		con = DriverManager.getConnection(url, userName, password);
@@ -124,29 +124,29 @@ public class AddNewReservation extends Enter_Manager implements ActionListener {
 			String ExpectedDateOfCheckIn = TransDateString.transDateString(tempExpectedDateOfCheckIn);
 			String ExpectedNumberOfCheckIn = txt_ExpectedNumberOfCheckIn.getText().trim();
 			
-			/*ÕıÔòÅĞ¶ÏÊäÈëµÄÔ¤¼ÆÈë×¡ÌìÊı*/
+			/*æ­£åˆ™åˆ¤æ–­è¾“å…¥çš„é¢„è®¡å…¥ä½å¤©æ•°*/
 			if(!(ExpectedNumberOfCheckIn.matches("[1-9]+"))) {
-				JOptionPane.showMessageDialog(this, "Ô¤¼ÆÈë×¡Ê±¼äÓ¦ÎªÕıÕûÊı", "ERROR",JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(this, "é¢„è®¡å…¥ä½æ—¶é—´åº”ä¸ºæ­£æ•´æ•°", "ERROR",JOptionPane.PLAIN_MESSAGE);
 				txt_ExpectedNumberOfCheckIn.setText("");
 			}
 			
 		    if (HotelName.equals("(NULL)") || TypeName.equals("(NULL)")) {
-		    	JOptionPane.showMessageDialog(this, "¾ÆµêÃûÓë·¿¼äÀàĞÍ¾ù²»ÄÜÎª¿Õ", "WARNING",JOptionPane.PLAIN_MESSAGE);
+		    	JOptionPane.showMessageDialog(this, "é…’åº—åä¸æˆ¿é—´ç±»å‹å‡ä¸èƒ½ä¸ºç©º", "WARNING",JOptionPane.PLAIN_MESSAGE);
 		    } else {
-		    	/*µÃµ½µ±Ç°¶©µ¥ÊıcurrentRow*/
+		    	/*å¾—åˆ°å½“å‰è®¢å•æ•°currentRow*/
 		        String SQL_SelectCurrentRow;
 		        SQL_SelectCurrentRow = "SELECT * FROM Reservation";
 			    result_CurrentRow = sql.executeQuery(SQL_SelectCurrentRow);
 			    result_CurrentRow.last();
 			    int currentRow = result_CurrentRow.getRow();
 			    
-			    /*¼ì²éÊÇ·ñ»¹ÓĞ¿ÉÔ¤¶©µÄ·¿¼ä*/
+			    /*æ£€æŸ¥æ˜¯å¦è¿˜æœ‰å¯é¢„è®¢çš„æˆ¿é—´*/
 			    String SQL_SelectRoomIsRemaining;
-			    SQL_SelectRoomIsRemaining = "SELECT COUNT(Room.RSerialNumber) FROM Hotel,Room,RoomType WHERE Hotel.HSerialNumber=Room.HSerialNumber AND RoomStatus='¿ÕÏĞÖĞ' AND RoomType.RSerialNumber=Room.RSerialNumber AND TypeName='" + TypeName + "' AND HotelName='" + HotelName + "'";
+			    SQL_SelectRoomIsRemaining = "SELECT COUNT(Room.RSerialNumber) FROM Hotel,Room,RoomType WHERE Hotel.HSerialNumber=Room.HSerialNumber AND RoomStatus='ç©ºé—²ä¸­' AND RoomType.RSerialNumber=Room.RSerialNumber AND TypeName='" + TypeName + "' AND HotelName='" + HotelName + "'";
 			    result_SelectRoomIsRemaining = sql.executeQuery(SQL_SelectRoomIsRemaining);
 			    boolean roomIsRemaining = result_SelectRoomIsRemaining.next();
 			    if (roomIsRemaining == false) {
-			        JOptionPane.showMessageDialog(this, "ÒÑ¾­Ã»ÓĞ¿ÉÒÔÔ¤¶©µÄ·¿¼äÁË", "WARNING", JOptionPane.WARNING_MESSAGE);
+			        JOptionPane.showMessageDialog(this, "å·²ç»æ²¡æœ‰å¯ä»¥é¢„è®¢çš„æˆ¿é—´äº†", "WARNING", JOptionPane.WARNING_MESSAGE);
 			    } else {
 			    	 String SQL_SelectHotelAndCustomerInformation;
 					 SQL_SelectHotelAndCustomerInformation = "SELECT CSerialNumber,HSerialNumber,Name FROM Customer,Hotel WHERE HotelName='" + HotelName + "' AND AccountNumber='" + final_AccountNumber + "'";
@@ -161,7 +161,7 @@ public class AddNewReservation extends Enter_Manager implements ActionListener {
 					 String SQL_ExecReservationRoom = "";
 					    
 					 if (isHavingData == false) {
-						 JOptionPane.showMessageDialog(this, "Î´Öª´íÎó£¬ÇëÖØĞÂ²Ù×÷", "WARNING", JOptionPane.WARNING_MESSAGE);
+						 JOptionPane.showMessageDialog(this, "æœªçŸ¥é”™è¯¯ï¼Œè¯·é‡æ–°æ“ä½œ", "WARNING", JOptionPane.WARNING_MESSAGE);
 					 } else {
 					     CSerialNumber = result_SelectHotelAndCustomerInformation.getString(1).trim();
 						 HSerialNumber = result_SelectHotelAndCustomerInformation.getString(2).trim();
@@ -170,10 +170,10 @@ public class AddNewReservation extends Enter_Manager implements ActionListener {
 						
 						 int flag = sql.executeUpdate(SQL_InsertNewReservation);
 						 if (flag == 1) {
-							 JOptionPane.showMessageDialog(this, "Ô¤¶©³É¹¦", "CONGRATULATION", JOptionPane.PLAIN_MESSAGE);
+							 JOptionPane.showMessageDialog(this, "é¢„è®¢æˆåŠŸ", "CONGRATULATION", JOptionPane.PLAIN_MESSAGE);
 						 }
 						 
-						 /*Ô¤¶©³É¹¦ºóÊ¹¶ÔÓ¦·¿¼äÖĞµÄÒ»¸ö´¦ÓÚ¡°ÒÑÔ¤¶©¡±×´Ì¬*/
+						 /*é¢„è®¢æˆåŠŸåä½¿å¯¹åº”æˆ¿é—´ä¸­çš„ä¸€ä¸ªå¤„äºâ€œå·²é¢„è®¢â€çŠ¶æ€*/
 						 SQL_ExecReservationRoom = "EXEC ReservationRoom '" + HotelName + "','" + TypeName + "'";
 						 sql.executeQuery(SQL_ExecReservationRoom);
 						
@@ -188,14 +188,14 @@ public class AddNewReservation extends Enter_Manager implements ActionListener {
 	   
 	}
     
-    /*Çå³ı*/
+    /*æ¸…é™¤*/
     public void button_Clear_Click() {
     	list_HotelName.setSelectedIndex(0);
     	list_RoomType.setSelectedIndex(0);
 		txt_ExpectedNumberOfCheckIn.setText("");
 	}
 	
-    /*ÍË³ö*/
+    /*é€€å‡º*/
     public void button_Cancel_Click() {
 		this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
