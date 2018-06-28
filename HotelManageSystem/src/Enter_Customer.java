@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.sql.*;
 
-/*µÇÂ¼½çÃæ-ÓÃ»§*/
+/*ç™»å½•ç•Œé¢-ç”¨æˆ·*/
 public class Enter_Customer extends Enter implements ActionListener {
 	
 	JLabel label_AccountNumber,label_Password;
@@ -29,19 +29,19 @@ public class Enter_Customer extends Enter implements ActionListener {
 		jpanel1 = new JPanel();
 		jpanel2 = new JPanel();
 		
-		label_AccountNumber = new JLabel("ÕËºÅ£º");
+		label_AccountNumber = new JLabel("è´¦å·ï¼š");
 		txt_AccountNumber = new JTextField(10);
 		
-		label_Password = new JLabel("ÃÜÂë£º");
+		label_Password = new JLabel("å¯†ç ï¼š");
 		txt_Password = new JPasswordField(10);
 		
-		button_Enter = new JButton("µÇÂ¼");
+		button_Enter = new JButton("ç™»å½•");
 		button_Enter.addActionListener(this);
 		
-		button_Cancel = new JButton("·µ»Ø");
-        button_Cancel.addActionListener(this);
+		button_Cancel = new JButton("è¿”å›");
+                button_Cancel.addActionListener(this);
 
-		jpanel1.setBorder(new TitledBorder("ÓÃ»§µÇÂ¼:"));
+		jpanel1.setBorder(new TitledBorder("ç”¨æˆ·ç™»å½•:"));
 		
 		jpanel1.add(label_AccountNumber);
 		jpanel1.add(txt_AccountNumber);
@@ -52,7 +52,7 @@ public class Enter_Customer extends Enter implements ActionListener {
 		jpanel2.add(button_Enter);
 		jpanel2.add(button_Cancel);
 		
-	    add(jpanel1, BorderLayout.NORTH);
+	        add(jpanel1, BorderLayout.NORTH);
 		add(jpanel2, BorderLayout.SOUTH);		
 		
 		try {
@@ -63,7 +63,7 @@ public class Enter_Customer extends Enter implements ActionListener {
 
 	}
 	
-	/*µÇÂ¼°´Å¥*/
+	/*ç™»å½•æŒ‰é’®*/
 	public void button_Enter_Click() {
 		try {
 			con = DriverManager.getConnection(url, user, pwd);
@@ -79,7 +79,7 @@ public class Enter_Customer extends Enter implements ActionListener {
 			boolean accountNumberAndPasswordIsHavingData = result_AccountNumberAndPassword.next();
 			
 			if (accountNumberAndPasswordIsHavingData == false) {
-				JOptionPane.showMessageDialog(this, "ÕËºÅ»òÃÜÂë´íÎó", "ÌáÊ¾", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "è´¦å·æˆ–å¯†ç é”™è¯¯", "æç¤º", JOptionPane.WARNING_MESSAGE);
 				txt_AccountNumber.setText("");
 				txt_Password.setText("");
 			} else {
@@ -99,7 +99,7 @@ public class Enter_Customer extends Enter implements ActionListener {
 		}  
 	}
 	
-	/*ÍË³ö*/
+	/*é€€å‡º*/
 	public void button_Cancel_Click() {
 		this.dispose();
 		JFrame.setDefaultLookAndFeelDecorated(true);
